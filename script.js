@@ -41,22 +41,7 @@ function playRound(playerSelection, computerSelection) {
 
 
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        let playerSelection =  prompt("What do you choose?").toLocaleLowerCase();
-        console.log(playRound(playerSelection, computerSelection));        
-    }
-    
-    if (computerScore > playerScore) {
-        return "Computer wins, You lose.";
-    } else if (playerScore > computerScore) {
-        return "You win, Computer lose.";
-    } else {
-        return "Got nothing for ya.";
-    }
-}
 
-console.log(game());
 
 function showScore() {
     return "Computer: " + computerScore + "  " + "Player: " + playerScore;
