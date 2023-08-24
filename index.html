@@ -4,12 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-   <button id="rock">Rock</button>
-   <button id="paper">Paper</button>
-   <button id="scissors">Scissors</button>
+
+    <header><h1>Project RPS</h1></header>
+
+    <div class="container">
+        <p>Through a simple game of rock paper scissors, we enquire who is smarter- <strong>Man or Computer.</strong></p>
+        
+        <h3>
+            Player <span id="p-score"> 0 </span> - <span id="c-score">0</span> Computer
+        </h3>
+        <div class="btns-container">
+            <button class="option" id="rock-btn" onclick="playRound('rock')">Rock</button>
+            <button class="option" id="paper-btn" onclick="playRound('paper')">Paper</button>
+        <button class="option" id="scissors-btn" onclick="playRound('scissors')">Scissors</button>
+        </div>
+        <div id="round"></div>
+    </div>
+   <footer>Project RPS 2023</footer>
+   <script src="script.js"></script>
 </body>
 </html>
