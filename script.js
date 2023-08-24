@@ -1,50 +1,77 @@
-let choices;
-let computerChoice;
-let playerScore = 0;
-let computerScore = 0;
-const computerSelection = getComputerChoice();
+const rockBtn = document.getElementById("rock-btn");
+const paperBtn = document.getElementById("paper-btn");
+const scissorsBtn = document.getElementById("scissors-btn");
+const pScore = document.getElementById("p-score");
+const cScore = document.getElementById("c-score");
+const round = document.getElementById("round");
 
-function getComputerChoice() {
-    var choices = ['rock', 'paper', 'scissors']
+// options to select 
+const choices = ['rock', 'paper', 'scissors']
+
+// selects random option 
+function getComputerChoice() {  
     let computerChoice = choices[Math.floor(Math.random() * choices.length)]
     return computerChoice; 
 }
 
 
-function playRound(playerSelection, computerSelection) {
-         
+// setting initial variables
+let playerSelection;
+let playerScore = 0;
+let computerScore = 0;
+
+
+// game round
+function playRound(playerSelection) {
+
+    const computerSelection = getComputerChoice();
+
     if (playerSelection === computerSelection ) {
-        return "It's a tie.";
+        round.innerHTML = "<p>It is a tie</p>";
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
         playerScore++; 
-        return "You win! Rock beats Scissors.";
+        round.innerHTML = "<p>You get a point! Rock beats Scissors.</p>";
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
          computerScore++;
-         return "You lose! Rock beats Scissors.";
+        round.innerHTML = "<p>No points for you! Rock beats Scissors.</p>";
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
         playerScore++;
-        return "You win! Scissors beats Paper.";
+        round.innerHTML = "<p>You get a point! Scissors beats Paper.</p>";
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         computerScore++;
-        return "You lose! Scissors beats Paper.";
+        round.innerHTML = "<p>No points for you! Scissors beats Paper.</p>";
     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
         computerScore++;
-        return "You lose! Paper beats Rock.";
+        round.innerHTML = "<p>No points for you! Paper beats Rock.</p>";
     } else if (playerSelection === 'paper' && computerSelection === 'rock') { 
         playerScore++;
-        return  "You win! Paper beats Rock.";
+        round.innerHTML = "<p>You get a point! Paper beats Rock.</p>";
     } else {
-        return " You didn't choose anything.";
+        round.innerHTML = "<p>You didn't choose anything.</p>";
     }
            
+    updateScore();
+    checkWinner();
+    
 }
 
-
-
-
-
-function showScore() {
-    return "Computer: " + computerScore + "  " + "Player: " + playerScore;
+// update scores
+function updateScore() {
+    document.getElementById("p-score").textContent = playerScore;
+    document.getElementById("c-score").textContent = computerScore;
 }
 
-console.log(showScore());
+// decide the final winner
+function checkWinner() {
+    if (playerScore === 5 || computerScore === 5) {
+        const winner =
+        playerScore === 5
+        ? "You win! Congrats. Project simulation Complete"
+        : "Computer wins. Try again next time. Project simulation complete";
+        round.innerHTML = `<h3 class="result">${winner}</h3>`
+        return false;
+       
+    }
+    
+}
+
